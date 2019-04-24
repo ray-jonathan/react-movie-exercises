@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Genres from './Genres'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      genre: '',
+      movie: ''
+    }
+
+  }
+  render(){
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h3>Choose genre: <Genres></Genres></h3>
+          {this.state.genre? <></> : <></>}
+          {this.state.movie? <></> : <></>}
+        </header>
+      </div>
+    );
+  }
+
+  _genreHandler = (e) => {
+    this.setState({
+      genre: e.target.value
+    })
+  }
+  _movieHandler = (e) => {
+    this.setState({
+      movie: e.target.value
+    })
+  }
 }
 
 export default App;
